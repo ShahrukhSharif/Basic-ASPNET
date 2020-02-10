@@ -1,0 +1,20 @@
+Enitiy FrameWork --->>>
+
+It's a wrap on Database,So we Can Easily Do our Operation with DataBase.
+We Have To Write Less Code.
+
+
+
+##############------------------####################----------------#######################
+
+Steps to implement Entity FrameWork ------>>>
+
+1. Install The Entity Framework Package.
+2. Create Two Class,One Actual Class and Another one for Enity Framework.So that class can Handle Entitry FrameWork Data.
+3. Add The Connection String into WebConfig File.
+4. Create Controller 
+5. Add Propery into Global.asax File.It is Used for installing Resources.
+
+
+##################------------####################----------------#########################
+
