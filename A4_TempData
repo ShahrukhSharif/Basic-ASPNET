@@ -1,0 +1,46 @@
+TempData --->>
+
+It's Used To Redirect Data From One Controller to Another Controller.
+It's Also a Key Value pair
+
+
+------------------------------------------------------------------------------------------------------------
+
+Controller --->>>
+
+public class HomeController : Controller
+    {
+        // GET: Home
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        public ActionResult Data1()
+        {
+            TempData["Name"] = "Shahrukh";
+            return RedirectToAction("Data2");
+        }
+
+        public ActionResult Data2()
+        {
+            return View();
+        }
+
+    }
+    
+    
+    --------------------------------------------------------------------------------------------------------
+    
+    
+@{
+    ViewBag.Title = "Data2";
+}
+
+<h2>Data2</h2>
+
+
+<h1>
+
+    @TempData["Name"]
+</h1>
