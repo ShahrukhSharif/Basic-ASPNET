@@ -1,0 +1,105 @@
+Action Method --->>>>
+
+In Controller we define a Function And Return type of that function is ActionResult,then we call that function Action Method.
+
+If A Function is Action Method Then,
+  
+  A. We Can Return Data from Model To View.
+  B. We can return Data Contoller To View.
+  C. We Can return Data From One Controller to Another Controller.
+  
+
+We Can Achieve This thing with the help of,
+ViewBag,ViewData And TempModel.
+
+
+------------------------------------------------------------------------------------------------------------------
+
+1. ViewBag --->>> If You want to display temp data on view then use ViewBag in Controller.
+
+
+
+
+
+#-------------------------------------------Controller Part-----------------------------------------
+
+public class HomeController : Controller
+    {
+        // GET: Home
+        public ActionResult Index()
+        {
+
+            ViewBag.Name = "Shahrukh";
+            return View();
+        }
+
+        public ActionResult Hello1()
+        {
+
+            ViewBag.Class = new List<string>
+            {
+                "a1",
+                "a2",
+                "a3"
+            };
+            return View();
+        }
+
+    }
+    
+    
+#-------------------------------------------View Part----------------------------------------
+
+#######################Index Method View Part
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+<h1>@ViewBag.Name</h1>
+
+#######################Hello1 Method View Part
+
+
+
+@{
+    ViewBag.Title = "Hello1";
+}
+
+<h2>Hello1</h2>
+
+
+@foreach (string jis in ViewBag.Class)
+{
+    <li>
+        @jis
+    </li>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+ 
