@@ -1,0 +1,67 @@
+Model --->>>
+
+If we want to Handle our data Part using Database,then we will use this Concept.
+
+
+
+-------------------------------------------------------------------------------------------------------------------
+
+Model Class --->>>>
+
+namespace ModelConcept.Models
+{
+    public class Company
+    {
+        public int companyId { get; set; }
+
+        public string companyName { get; set; }
+
+        public string comapnyAddress { get; set; }
+    }
+}
+
+-------------------------------------------------------------------------------------------------------------------
+Controller part --->>>>>>
+
+ public class HomeController : Controller
+    {
+        // GET: Home
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        public ActionResult ModelUse()
+        {
+            Company c1 = new Company()
+            {
+                companyId = 1,
+                companyName ="Focify",
+                comapnyAddress ="Banglore"
+            };
+            return View(c1);
+        }
+    }
+
+------------------------------------------------------------------------------------------------------------------
+View part --->>>
+
+@model ModelConcept.Models.Company
+
+@{
+    ViewBag.Title = "ModelUse";
+}
+
+<h2>ModelUse</h2>
+
+<table>
+    <th>companyId</th>
+    <th>companyName</th>
+    <th>comapnyAddress</th>
+    <tr>
+        <td>@Model.companyId</td>
+        <td>@Model.companyName</td>
+        <td>@Model.comapnyAddress</td>
+    </tr>
+</table>
+
