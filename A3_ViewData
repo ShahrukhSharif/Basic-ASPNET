@@ -1,0 +1,75 @@
+ViewData --->>
+
+1. It's a key Dictionary Pair.
+2. It's Faster then ViewBag
+3. We need Casting while sending data to View Part.
+
+
+----------------------------------------------------------------------------------------------------
+
+Controller Part --->>>
+
+    public class HomeController : Controller
+    {
+        // GET: Home
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        public ActionResult Return1()
+        {
+            ViewData["Name"] = "Shahrukh";
+            return View();
+        }
+
+        public ActionResult Return2()
+        {
+            ViewData["Class"] = new List<string>{
+                "a1",
+                "a2",
+                "a3"
+            };
+            return View();
+        }
+
+    }
+
+
+
+---------------------------------------------------------------------------------------------------
+
+View Part --->>>>
+
+Return1 View --->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+@{
+    ViewBag.Title = "Return1";
+}
+
+<h2>Return1</h2>
+
+<h1>
+    @ViewData["Name"]
+</h1>
+
+
+Return2 View --->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+@{
+    ViewBag.Title = "Return2";
+}
+
+<h2>Return2</h2>
+
+
+@foreach(string s1 in (List<string>)ViewData["Class"])
+{
+    <li>
+
+        @s1
+    </li>
+}
+
+
