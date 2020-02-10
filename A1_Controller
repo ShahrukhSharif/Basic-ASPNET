@@ -1,0 +1,74 @@
+1. Controller --->>>
+
+When a user request how controller Handle the Request.
+
+
+-----------------------------------------------------------------------------------------------------------------------
+
+
+
+public static void RegisterRoutes(RouteCollection routes)
+{
+    routes.IgnoreRoute("{resource}.axd/{*pathInfo}");       #-----------   Trace the Request
+
+    routes.MapRoute(
+        name: "Default",
+        url: "{controller}/{action}/{id}",                  #-----------   Url Pattern of controller
+        defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }   #-------- Default Controller
+    );
+}
+
+
+
+-------------------------------------------------------------------------------------------------------------------------
+
+Controllers --->>>>
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace Tutorial1.Controllers
+{
+    public class HomeController : Controller
+    {
+
+        public string Index()
+        {
+            return "Hi,This is my First Controller Experience";
+        }
+
+        public string Index1(string id)
+        {
+            return "Hi,This is my First Controller Experience"+id;
+        }
+
+    }
+}
+
+-----------------------------------------------------------------------------------------------------------------------
+
+Controller Method Without Parameter ---->>>
+
+public string Index()
+{
+        return "Hi,This is my First Controller Experience";
+}
+
+----------------------------------------------------------------------------------------------------------------------
+
+Controller Method With Parameter ---->>>
+
+public string Index()
+{
+        return "Hi,This is my First Controller Experience";
+}
+
+        
+        
+        
+
+
+
