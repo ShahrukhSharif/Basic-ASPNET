@@ -18,3 +18,90 @@ Steps to implement Entity FrameWork ------>>>
 
 ##################------------####################----------------#########################
 
+Part-1.
+
+Go To Nuget Package manager and write Entity FrameWork.
+
+
+--------------------------------------------------------
+
+Part-2.
+Create Two Models --->>>
+
+namespace Entity_Framework_Experiment_Version.Models
+{
+    [Table("tblCompany")]
+    public class Company
+    {
+        public int id { get; set; }
+
+        public string name { get; set; }
+
+        public string product { get; set; }
+
+        public string location { get; set; }
+    }
+}
+
+
+
+namespace Entity_Framework_Experiment_Version.Models
+{
+    public class CompanyContext : DbContext
+    {
+        public DbSet<Company> Companies { get; set; }
+    }
+}
+
+
+-----------------------------------------------------------
+
+Part -3.
+Add Connection String 
+
+View Part --->>>Server Explorer --->>>Connect To Db
+
+And Put This Line in WebConfig File.
+
+
+  <connectionStrings>
+    <add name="CompanyContext" connectionString="Data Source=DESKTOP-238JD0B;Initial Catalog=FahadHussain;Integrated Security=True" providerName="System.data.SqlClient" />
+  </connectionStrings>
+    
+        
+-------------------------------------------------------------
+
+Part -4.
+Create Controller
+
+    public class HomeController : Controller
+    {
+        // GET: Home
+        public ActionResult Index(int id)
+        {
+            CompanyContext obj = new CompanyContext();
+            Company cmp = obj.Companies.Single(x => x.id == id);
+            return View(cmp);
+        }
+    }
+    
+    
+    
+--------------------------------------------------------------
+
+Part -5.
+Add View Part
+
+
+--------------------------------------------------------------
+
+Part -6. Add Resources Part in Global.asax File
+
+
+        protected void Application_Start()
+        {
+            Database.SetInitializer<Entity_Framework_Experiment_Version.Models.CompanyContext>(null);
+            AreaRegistration.RegisterAllAreas();
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
+        }
+    
